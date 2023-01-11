@@ -120,6 +120,24 @@
   <build>
     <plugins>
       <plugin>
+          <groupId>org.eclipse.emt4j</groupId>
+          <artifactId>emt4j-maven-plugin</artifactId>
+          <version>0.7.0</version>
+          <executions>
+              <execution>
+                  <phase>process-test-classes</phase>
+                  <goals>
+                      <goal>check</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <fromVersion>8</fromVersion>
+              <toVersion>11</toVersion>
+              <outputFile>report.html</outputFile>
+          </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <executions>

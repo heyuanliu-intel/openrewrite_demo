@@ -1,0 +1,1 @@
+./mvnw process-test-classes -Dfiles=/home/heyuan/openrewrite_demo/spring-petclinic/target/classes
