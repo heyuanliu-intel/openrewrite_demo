@@ -10,9 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.assertj.core.util.Lists;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -21,14 +20,12 @@ import org.springframework.samples.petclinic.vet.Specialty;
 import org.springframework.samples.petclinic.vet.Vet;
 import org.springframework.samples.petclinic.vet.VetController;
 import org.springframework.samples.petclinic.vet.VetRepository;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 /**
  * Test class for the {@link VetController}
  */
-@RunWith(SpringRunner.class)
 @WebMvcTest(VetController.class)
 public class VetControllerTests {
 
@@ -38,7 +35,7 @@ public class VetControllerTests {
     @MockBean
     private VetRepository vets;
 
-    @Before
+    @BeforeEach
     public void setup() {
         Vet james = new Vet();
         james.setFirstName("James");
@@ -56,27 +53,27 @@ public class VetControllerTests {
     }
 
     @Test
-    public void testShowVetListHtml() throws Exception {
+    void testShowVetListHtml() throws Exception {
         mockMvc.perform(get("/vets.html"))
-            .andExpect(status().isOk())
-            .andExpect(model().attributeExists("vets"))
-            .andExpect(view().name("vets/vetList"));
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("vets"))
+                .andExpect(view().name("vets/vetList"));
     }
 
     @Test
-    public void testShowResourcesVetList() throws Exception {
+    void testShowResourcesVetList() throws Exception {
         ResultActions actions = mockMvc.perform(get("/vets.json").accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
         actions.andExpect(content().contentType("application/json;charset=UTF-8"))
-            .andExpect(jsonPath("$.vetList[0].id").value(1));
+                .andExpect(jsonPath("$.vetList[0].id").value(1));
     }
 
     @Test
-    public void testShowVetListXml() throws Exception {
+    void testShowVetListXml() throws Exception {
         mockMvc.perform(get("/vets.xml").accept(MediaType.APPLICATION_XML))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
-            .andExpect(content().node(hasXPath("/vets/vetList[id=1]/id")));
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_XML_VALUE))
+                .andExpect(content().node(hasXPath("/vets/vetList[id=1]/id")));
     }
 
 }
