@@ -25,9 +25,9 @@
     <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
     <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
     <webjars-jquery.version>2.2.4</webjars-jquery.version>
-    <wro4j.version>1.10.1</wro4j.version>
+    <!-- <wro4j.version>1.10.1</wro4j.version> -->
 
-    <cobertura.version>2.7</cobertura.version>
+    <!-- <cobertura.version>2.7</cobertura.version> -->
 
   </properties>
 
@@ -189,7 +189,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
         <version>${cobertura.version}</version>
@@ -204,7 +204,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
 
       <!-- Spring Boot Actuator displays build-related information if a git.properties
         file is present at the classpath -->
@@ -228,7 +228,7 @@
         </configuration>
       </plugin>
 
-      <plugin>
+      <!-- <plugin>
         <groupId>ro.isdc.wro4j</groupId>
         <artifactId>wro4j-maven-plugin</artifactId>
         <version>${wro4j.version}</version>
@@ -254,7 +254,7 @@
             <version>${webjars-bootstrap.version}</version>
           </dependency>
         </dependencies>
-      </plugin>
+      </plugin> -->
       <plugin>
         <groupId>org.openrewrite.maven</groupId>
         <artifactId>rewrite-maven-plugin</artifactId>
@@ -282,9 +282,8 @@
       </plugin>
     </plugins>
   </build>
-  <reporting>
+  <!-- <reporting>
     <plugins>
-      <!-- integrate maven-cobertura-plugin to project site -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
@@ -297,7 +296,7 @@
         </configuration>
       </plugin>
     </plugins>
-  </reporting>
+  </reporting> -->
 
   <!-- Apache 2 license -->
   <licenses>
