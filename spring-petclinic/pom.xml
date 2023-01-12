@@ -17,7 +17,7 @@
   <properties>
 
     <!-- Generic properties -->
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -25,7 +25,7 @@
     <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
     <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
     <webjars-jquery.version>2.2.4</webjars-jquery.version>
-    <wro4j.version>1.8.0</wro4j.version>
+    <wro4j.version>1.10.1</wro4j.version>
 
     <cobertura.version>2.7</cobertura.version>
 
@@ -121,6 +121,12 @@
       <groupId>org.webjars</groupId>
       <artifactId>jquery-ui</artifactId>
       <version>${webjars-jquery-ui.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.3.2</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.webjars</groupId>
@@ -255,16 +261,24 @@
         <version>4.22.1</version>
         <configuration>
           <activeRecipes>
-            <recipe>org.openrewrite.java.spring.boot2.SpringBoot1To2Migration</recipe>
+            <recipe>org.openrewrite.java.migrate.Java8toJava11</recipe>
           </activeRecipes>
         </configuration>
         <dependencies>
           <dependency>
             <groupId>org.openrewrite.recipe</groupId>
-            <artifactId>rewrite-spring</artifactId>
-            <version>4.19.2</version>
+            <artifactId>rewrite-migrate-java</artifactId>
+            <version>1.4.2</version>
           </dependency>
         </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jdeprscan-plugin</artifactId>
+        <version>3.0.0-alpha-1</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
       </plugin>
     </plugins>
   </build>
