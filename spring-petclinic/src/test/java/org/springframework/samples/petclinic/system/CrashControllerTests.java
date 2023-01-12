@@ -1,7 +1,7 @@
 package org.springframework.samples.petclinic.system;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringRunner.class)
 // Waiting https://github.com/spring-projects/spring-boot/issues/5574
-@Ignore
+@Disabled
 @WebMvcTest(controllers = CrashController.class)
 public class CrashControllerTests {
 
@@ -30,7 +30,7 @@ public class CrashControllerTests {
     private MockMvc mockMvc;
 
     @Test
-    public void testTriggerException() throws Exception {
+    void testTriggerException() throws Exception {
         mockMvc.perform(get("/oups")).andExpect(view().name("exception"))
                 .andExpect(model().attributeExists("exception"))
                 .andExpect(forwardedUrl("exception")).andExpect(status().isOk());

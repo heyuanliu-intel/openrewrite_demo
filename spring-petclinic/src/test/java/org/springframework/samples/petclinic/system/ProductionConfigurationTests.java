@@ -1,6 +1,6 @@
 package org.springframework.samples.petclinic.system;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class ProductionConfigurationTests {
     private VetRepository vets;
 
     @Test
-    public void testFindAll() throws Exception {
+    void testFindAll() throws Exception {
         vets.findAll();
         vets.findAll(); // served from cache
     }
